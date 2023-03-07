@@ -5,7 +5,7 @@ func readFiles(){
     // THIS is a string
     print(NSHomeDirectory())
     let libsupport = NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject")
-    //let propfilesupport = libsupport.appending("/vmPreference.csv")
+    //let propfilesupport = libsupport.appending("/vmPreference.json")
     
     // THIS is a URL
     let fm = FileManager.default
@@ -13,7 +13,7 @@ func readFiles(){
     let appsupp = home.appendingPathComponent("Library/Application Support")
     
     let filesDirectory = appsupp.appendingPathComponent("com.peterai.ViewsProject")
-    //let propsFile = filesDirectory.appendingPathComponent("vmPreferences.csv")
+    //let propsFile = filesDirectory.appendingPathComponent("vmPreferences.json")
     
     if !(fm.fileExists(atPath: libsupport)){
         do {
@@ -40,7 +40,7 @@ func writeFile(stuff: String, worker: Worker, completion: @escaping (String) -> 
     let fm = FileManager.default
     let filesDirectory = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject")
     
-    let propsFileName = "vmPreferences.csv"
+    let propsFileName = "vmPreferences.json"
     let propsFile = filesDirectory.appendingPathComponent(propsFileName)
     
     print("My stuff input is: \(stuff)")
@@ -95,8 +95,8 @@ func writeFile(stuff: String, worker: Worker, completion: @escaping (String) -> 
 
 func deleteFile(){
     let fm = FileManager.default
-    let myFile =  NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject/vmPreference.csv")
-    let myUrl = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject/vmPreferences.csv")
+    let myFile =  NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject/vmPreference.json")
+    let myUrl = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject/vmPreferences.json")
     
     do {
         try fm.removeItem(at: myUrl)
@@ -108,8 +108,8 @@ func deleteFile(){
 
 func readFromFile(){
     let fm = FileManager.default
-    let myFile =  NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject/vmPreference.csv")
-    let myUrl = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject/vmPreferences.csv")
+    let myFile =  NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject/vmPreference.json")
+    let myUrl = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject/vmPreferences.json")
     
     do {
         let fileContents = try String(contentsOf: myUrl)
