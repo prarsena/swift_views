@@ -14,6 +14,7 @@
 		D035BAE4299090BC004E9B64 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D035BAE3299090BC004E9B64 /* SheetView.swift */; };
 		D035BAE9299090E7004E9B64 /* PassDataBetweenWindowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D035BAE8299090E7004E9B64 /* PassDataBetweenWindowsView.swift */; };
 		D035BAEE29909139004E9B64 /* RunMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D035BAED29909139004E9B64 /* RunMachineView.swift */; };
+		D075E67029B6C358009BE00F /* WorkerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075E66F29B6C358009BE00F /* WorkerObject.swift */; };
 		D0A2B6E4299C8B9500809576 /* SimplePassDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A2B6E3299C8B9500809576 /* SimplePassDataView.swift */; };
 		D0A98D3329A04C54000E2C38 /* FunnyFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A98D3229A04C54000E2C38 /* FunnyFunctions.swift */; };
 		D0A98D3F29A04D73000E2C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A98D3D29A04D73000E2C38 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		D035BAE3299090BC004E9B64 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		D035BAE8299090E7004E9B64 /* PassDataBetweenWindowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassDataBetweenWindowsView.swift; sourceTree = "<group>"; };
 		D035BAED29909139004E9B64 /* RunMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMachineView.swift; sourceTree = "<group>"; };
+		D075E66F29B6C358009BE00F /* WorkerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerObject.swift; sourceTree = "<group>"; };
 		D0A2B6E3299C8B9500809576 /* SimplePassDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePassDataView.swift; sourceTree = "<group>"; };
 		D0A98D3229A04C54000E2C38 /* FunnyFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnyFunctions.swift; sourceTree = "<group>"; };
 		D0A98D3E29A04D73000E2C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				D0A2B6E3299C8B9500809576 /* SimplePassDataView.swift */,
 				D035BAED29909139004E9B64 /* RunMachineView.swift */,
 				D0A98D3229A04C54000E2C38 /* FunnyFunctions.swift */,
+				D075E66F29B6C358009BE00F /* WorkerObject.swift */,
 			);
 			path = ViewsProject;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				D035BAE9299090E7004E9B64 /* PassDataBetweenWindowsView.swift in Sources */,
 				D035BAD02990908C004E9B64 /* AppDelegate.swift in Sources */,
 				D035BAEE29909139004E9B64 /* RunMachineView.swift in Sources */,
+				D075E67029B6C358009BE00F /* WorkerObject.swift in Sources */,
 				D0A98D3329A04C54000E2C38 /* FunnyFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

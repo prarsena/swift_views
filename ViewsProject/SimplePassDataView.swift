@@ -3,12 +3,14 @@ import SwiftUI
 class Worker: ObservableObject  {
     @Published var name: String = ""
     @Published var age: Int = 18
+    @Published var title: String = ""
 }
 
 struct SimplePassDataView: View {
     @State var name = "Peter"
     @State var show = false
     @State var worker = Worker()
+    //var workerObj = WorkerObject()
     
     var body: some View {
         if !show {
@@ -34,10 +36,8 @@ struct ViewOne: View {
             }
             HStack{
                 Text("Enter your age: ")
-                
                 Text("\(worker.age)")
             }
-            
             HStack{
                 Button("Decrease age", action: {
                     worker.age = worker.age - 1
@@ -51,7 +51,10 @@ struct ViewOne: View {
                     refresh.toggle()
                 })
             }
-            
+            HStack{
+                Text("Enter your title!")
+                TextField("What's your title?", text: $worker.title)
+            }
             Button("Next"){ self.show = true }
             Text("\(String(refresh))").hidden()
             //Button("Print file names", action: readFiles )
@@ -60,14 +63,21 @@ struct ViewOne: View {
             let myStringToWrite: String = "Worker name, \(worker.name), Worker age, \(worker.age)"
             
             Button("Write to file", action: {
-                writeFile(stuff: myStringToWrite, completion: {
+                refresh.toggle()
+                
+                writeFile(stuff: myStringToWrite, worker: worker, completion: {
                     str in DispatchQueue.main.async{
                         print("Success", str)
                     }
                 })
             })
             
-            Button("Print file contents ", action: readFromFile )
+            Button("Print file contents ", action:{
+                refresh.toggle()
+                readFromFile()
+            })
+            
+            Button("Delete data", action: deleteFile )
         }.padding(50)
     }
 }
