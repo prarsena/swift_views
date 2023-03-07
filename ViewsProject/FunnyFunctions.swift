@@ -71,9 +71,19 @@ func writeFile(stuff: String, worker: Worker, completion: @escaping (String) -> 
         if (fm.fileExists(atPath: String(newStringWithoutTheWordFileInIt))){
             print("yup, the file is there. Appending new entry.")
             let fileContents = try String(contentsOf: propsFile)
-            let newFileContents = "\(fileContents),\n\(fileInput)\n"
-            let d = Data(newFileContents.utf8)
-            try d.write(to: propsFile)   
+            if fileContents.starts(with: "["){
+                //let openingBracket = fileContents.index(fileContents.startIndex, offsetBy: 1)
+                
+                let nonbracketedFileContents = fileContents[fileContents.index(fileContents.startIndex, offsetBy: 1) ..< fileContents.index(fileContents.endIndex, offsetBy: -2)]
+                
+                let newFileContents = "[\(nonbracketedFileContents),\n\(fileInput)]\n"
+                let d = Data(newFileContents.utf8)
+                try d.write(to: propsFile)
+            } else {
+                let newFileContents = "[\(fileContents),\n\(fileInput)]\n"
+                let d = Data(newFileContents.utf8)
+                try d.write(to: propsFile)
+            }
         } else {
             print("No file exists. Writing to new file.")
             try data.write(to: propsFile)
@@ -98,12 +108,8 @@ func deleteFile(){
 
 func readFromFile(){
     let fm = FileManager.default
-
     let myFile =  NSHomeDirectory().appending("/Library/Application Support/com.peterai.ViewsProject/vmPreference.csv")
-    
-
     let myUrl = fm.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/com.peterai.ViewsProject/vmPreferences.csv")
-    
     
     do {
         let fileContents = try String(contentsOf: myUrl)
