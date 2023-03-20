@@ -10,7 +10,6 @@ struct SimplePassDataView: View {
     @State var name = "Peter"
     @State var show = false
     @State var worker = Worker()
-    //var workerObj = WorkerObject()
     
     var body: some View {
         if !show {
@@ -27,12 +26,14 @@ struct ViewOne: View {
     @Binding var show: Bool
     @Binding var worker: Worker
     @State var refresh = false
+    @State var tempName = ""
+    @State var tempTitle = ""
     
     var body: some View {
         VStack{
             HStack{
                 Text("Enter your name!")
-                TextField("What's your name?", text: $worker.name)
+                TextField("What's your name?", text: $tempName)
             }
             HStack{
                 Text("Enter your age: ")
@@ -53,21 +54,23 @@ struct ViewOne: View {
             }
             HStack{
                 Text("Enter your title!")
-                TextField("What's your title?", text: $worker.title)
+                TextField("What's your title?", text: $tempTitle)
             }
             Button("Next"){ self.show = true }
             Text("\(String(refresh))").hidden()
-            //Button("Print file names", action: readFiles )
             
-            // TODO: maybe I should write a json object
             let myStringToWrite: String = "Worker name, \(worker.name), Worker age, \(worker.age)"
             
             Button("Write to file", action: {
                 refresh.toggle()
-                
+                worker.name = tempName
+                worker.title = tempTitle
                 writeFile(stuff: myStringToWrite, worker: worker, completion: {
                     str in DispatchQueue.main.async{
                         print("Success", str)
+                        tempName = ""
+                        tempTitle = ""
+                        refresh.toggle()
                     }
                 })
             })
@@ -76,8 +79,13 @@ struct ViewOne: View {
                 refresh.toggle()
                 readFromFile()
             })
+            HStack{
+                Button("Quit", action: {
+                    NSApplication.shared.keyWindow?.close()
+                })
+                Button("Delete data", action: deleteFile )
+            }
             
-            Button("Delete data", action: deleteFile )
         }.padding(50)
     }
 }

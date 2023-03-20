@@ -7,8 +7,9 @@
 
 import Foundation
 
-class WorkerObject {
-    let name: String = ""
-    let age: Int = 0
-    let title: String = ""
+struct WorkerObject: Decodable {
+    let ID: Int
+    let Name: String
+    let Age: Int
+    let Title: String
 }
